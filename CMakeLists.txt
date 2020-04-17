@@ -179,15 +179,15 @@ if(BUILD_STATIC_LIBS)
 endif()
 
 # Post build
-if(BUILD_SHARED_LIBS)
+if(BUILD_SHARED_LIBS AND PARENT_RELEASE_DIR)
     add_custom_command(TARGET ${lib_shared_name} POST_BUILD
-        COMMAND ${CMAKE_COMMAND} -E make_directory "${CMAKE_BINARY_DIR}/modules/")
+        COMMAND ${CMAKE_COMMAND} -E make_directory "${PARENT_RELEASE_DIR}/modules/")
     add_custom_command(TARGET ${lib_shared_name} POST_BUILD
-        COMMAND ${CMAKE_COMMAND} -E copy $<TARGET_FILE:${lib_shared_name}> "${CMAKE_BINARY_DIR}/modules/")
+        COMMAND ${CMAKE_COMMAND} -E copy $<TARGET_FILE:${lib_shared_name}> "${PARENT_RELEASE_DIR}/modules/")
     add_custom_command(TARGET ${lib_shared_name} POST_BUILD
-        COMMAND ${CMAKE_COMMAND} -E copy ${OGRE_CONFIG_DIR}/plugins.cfg "${CMAKE_BINARY_DIR}")
+        COMMAND ${CMAKE_COMMAND} -E copy ${OGRE_CONFIG_DIR}/plugins.cfg "${PARENT_RELEASE_DIR}")
     add_custom_command(TARGET ${lib_shared_name} POST_BUILD
-        COMMAND ${CMAKE_COMMAND} -E copy ${OGRE_CONFIG_DIR}/resources.cfg "${CMAKE_BINARY_DIR}")
+        COMMAND ${CMAKE_COMMAND} -E copy ${OGRE_CONFIG_DIR}/resources.cfg "${PARENT_RELEASE_DIR}")
 endif(BUILD_SHARED_LIBS)
 
 # Installation
