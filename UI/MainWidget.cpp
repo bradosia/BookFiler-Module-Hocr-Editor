@@ -219,9 +219,10 @@ void MainWidget::setImage(std::shared_ptr<bookfiler::Pixmap> pixmap) {
     return;
 #endif
   }
-  Ogre::TexturePtr tex = root->getTextureManager()->loadImage(
+  Ogre::shared_ptr<Ogre::Texture> tex = root->getTextureManager()->loadImage(
       Ogre::StringConverter::toString(textureName++), "g1", image);
-  Ogre::GLTexturePtr glTexPtr = tex.dynamicCast<Ogre::GLTexture>();
+  Ogre::GLTexturePtr glTexPtr =
+      Ogre::dynamic_pointer_cast<Ogre::GLTexture>(tex);
   glID = glTexPtr->getGLID();
   std::cout << "handle: " << tex->getHandle() << " origin: " << tex->getOrigin()
             << " name: " << tex->getName() << " glId: " << glID << std::endl;
