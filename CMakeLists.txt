@@ -3,6 +3,10 @@ cmake_minimum_required(VERSION 3.0)
 set(lib_base_name BookFiler-Module-hocrEditor)
 project(${lib_base_name} VERSION 1.0.0 LANGUAGES CXX)
 
+# Configurable Options
+OPTION(BUILD_SHARED_LIBS "Build shared libraries" ON)
+OPTION(BUILD_STATIC_LIBS "Build static libraries" ON)
+
 # Why Ogre?
 # Ogre used for:
 # 1. Setting up window device context
@@ -17,6 +21,7 @@ add_subdirectory(third_party/imgui/)
 set(INCLUDE_DIRECTORIES
   ${OGRE_INCLUDE_DIRS}
   third_party/imgui/include/
+  third_party/rapidjson/include/
 )
 set(LINK_DIRECTORIES
   ${OGRE_LIBRARY_DIRS}
@@ -52,9 +57,6 @@ set(STATIC_COMPILE_DEFINITIONS
 set(LIBRARIES ${LIBRARIES}
     imgui
     OgreMain
-
-    # QT5
-    Qt5::Widgets
 )
 
 if(WIN32)
@@ -104,14 +106,6 @@ elseif(UNIX)
         m
     )
 endif()
-
-set(LIBRARIES ${LIBRARIES}
-    imgui
-    OgreMain
-
-    # QT5
-    Qt5::Widgets
-)
 
 set(SHARED_LINK_LIBRARIES ${LIBRARIES})
 set(STATIC_LINK_LIBRARIES ${LIBRARIES})
