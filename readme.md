@@ -1,4 +1,4 @@
-# File Tree Pane Widget Module
+# BookFiler-Module-Hocr-Editor
 QT5 Widget
 
 # Project Organization
