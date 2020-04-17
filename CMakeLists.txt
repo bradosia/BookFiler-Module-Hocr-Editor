@@ -15,6 +15,8 @@ OPTION(BUILD_STATIC_LIBS "Build static libraries" ON)
 # Adds around ~6mb to binary size
 # No need to reinvent the wheel
 find_package(OGRE 1.09 REQUIRED)
+find_package(Boost 1.56 REQUIRED COMPONENTS
+             system filesystem)
 
 # third party
 add_subdirectory(third_party/imgui/)
