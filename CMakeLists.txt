@@ -1,7 +1,7 @@
 cmake_minimum_required(VERSION 3.0)
 
-# The module name
-set(lib_base_name hocrEditModule)
+set(lib_base_name BookFiler-Module-hocrEditor)
+project(${lib_base_name} VERSION 1.0.0 LANGUAGES CXX)
 
 # Why Ogre?
 # Ogre used for:
