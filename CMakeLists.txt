@@ -1,6 +1,6 @@
 cmake_minimum_required(VERSION 3.0)
 
-set(lib_base_name BookFiler-Module-hocrEditor)
+set(lib_base_name BookFiler-Module-hocr-Editor)
 project(${lib_base_name} VERSION 1.0.0 LANGUAGES CXX)
 
 # Configurable Options
@@ -30,18 +30,18 @@ set(LINK_DIRECTORIES
 
 # Set up source files
 set(SOURCES
-  Module.cpp
-  UI/MainWidget.cpp
-  UI/imgui_impl_bookfilerWidget.cpp
+  src/Module.cpp
+  src/UI/MainWidget.cpp
+  src/UI/imgui_impl_bookfilerWidget.cpp
 )
 
 set(HEADERS
-  Module.hpp
-  Interface.hpp
-  core/config.hpp
-  UI/MainWidget.hpp
-  UI/BookfilerRenderWidget.hpp
-  UI/imgui_impl_bookfilerWidget.hpp
+  src/Module.hpp
+  src/Interface.hpp
+  src/core/config.hpp
+  src/UI/MainWidget.hpp
+  src/UI/BookfilerRenderWidget.hpp
+  src/UI/imgui_impl_bookfilerWidget.hpp
 )
 
 set(SHARED_COMPILE_DEFINITIONS
@@ -188,7 +188,7 @@ if(BUILD_SHARED_LIBS AND PARENT_RELEASE_DIR)
         COMMAND ${CMAKE_COMMAND} -E copy ${OGRE_CONFIG_DIR}/plugins.cfg "${PARENT_RELEASE_DIR}")
     add_custom_command(TARGET ${lib_shared_name} POST_BUILD
         COMMAND ${CMAKE_COMMAND} -E copy ${OGRE_CONFIG_DIR}/resources.cfg "${PARENT_RELEASE_DIR}")
-endif(BUILD_SHARED_LIBS)
+endif()
 
 # Installation
 if(BUILD_SHARED_LIBS)
@@ -198,7 +198,7 @@ if(BUILD_SHARED_LIBS)
     ARCHIVE DESTINATION "${CMAKE_INSTALL_PREFIX}/${BIN_NAME}/modules"
     LIBRARY DESTINATION "${CMAKE_INSTALL_PREFIX}/${BIN_NAME}/modules"
   )
-endif(BUILD_SHARED_LIBS)
+endif()
 
 if(BUILD_STATIC_LIBS)
   install(TARGETS ${lib_name} EXPORT ${lib_name}_TARGETS
@@ -206,7 +206,7 @@ if(BUILD_STATIC_LIBS)
     ARCHIVE DESTINATION "${CMAKE_INSTALL_PREFIX}/${BIN_NAME}/lib"
     LIBRARY DESTINATION "${CMAKE_INSTALL_PREFIX}/${BIN_NAME}/lib"
   )
-endif(BUILD_STATIC_LIBS)
+endif()
 
 install(FILES ${HEADERS}
   DESTINATION "${CMAKE_INSTALL_PREFIX}/${BIN_NAME}/headers"
