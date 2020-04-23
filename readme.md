@@ -18,3 +18,14 @@ Top Level
 
 # Coding Practices
 * header guards are all caps and use underscore spacing
+
+# Development
+
+4/22/2020
+
+Dear imgui should be replaced with libcairo potentially since dear imgui widgets are not used.
+
+* cairo - rendering to a surface. surfaces such as opengl.
+
+found google flatui a imgui library
+* https://github.com/google/flatui
