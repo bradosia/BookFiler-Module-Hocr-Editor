@@ -29,3 +29,5 @@ Dear imgui should be replaced with libcairo potentially since dear imgui widgets
 
 found google flatui a imgui library
 * https://github.com/google/flatui
+
+Google's FPLBase has a renderer and asset manager.
